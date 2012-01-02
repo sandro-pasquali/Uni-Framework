@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		
+
+		
+		<script type="text/javascript" src="../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/dom.js')
+			.require('core/notify.js')
+			.observe(function() {
+				
+				this
+					['select']('.hello')
+					['append']('<p>sandro</p>')
+					['notify'](this.$)
+
+					.extend('foobar', function() {
+						this.advice('sandro', 1);
+					})
+					.foobar()
+			
+			});
+		
+		</script>
+		
+	</head>
+	<body>
+	
+<div class="container">
+  <div id="hi" class="hello">Hello</div>
+</div>
+
+
+
+	</body>
+</html>

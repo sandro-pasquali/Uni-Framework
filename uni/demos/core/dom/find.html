@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				this
+					//	#find in a result set, where it is likely that some elements are
+					//	descendants of others.  Then run a selector through #find in 
+					// 	those elements that is likely to create duplicates (multiple parents 
+					//	same descendants).  Duplicates are removed, #find returns the matches.
+					//
+					.select('div')
+					.notify(this.$)
+					.find('li')
+					.notify(this.$)
+					
+					//	#find within a single element.
+					//
+					.sub(document.getElementById('dummy_container'))
+					.notify(this.$)
+					.find('li')
+					.notify(this.$)
+					
+					//	Get all descendants.
+					//
+					.restore()
+					.find('*')
+					.notify(this.$)
+
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+		
+			<div class="ui component toggle"></div>
+			<div id="ellipses">...</div>
+			
+			<div id="group">
+				<div>one</div>
+				<div>
+					<ul>
+						<li>foo</li>
+						<li>bar</li>
+					</ul>
+				</div>
+				<div>three</div>
+			</div>
+			
+			<div>
+				<ul>
+					<li>item one</li>
+					<li>item two</li>
+					<li>item three</li>
+				</ul>
+			</div>
+			
+		</div>
+
+	</body>
+</html>

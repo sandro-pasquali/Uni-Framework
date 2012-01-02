@@ -1,0 +1,49 @@
+.ui.components.vgrid {
+	font-size		: 10px;
+	overflow		: hidden;
+	height			: auto;
+	width			: auto;
+	overflow-y		: auto;
+	
+	background:-moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%); /* firefox */
+  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee)); /* webkit */
+  	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#eeeeee',GradientType=0); /* ie */
+}
+
+.ui.components.vgrid .sr-item {
+	margin: 4px;
+	display: block;
+	
+	-moz-border-radius		: 5px;
+	-webkit-border-radius	: 5px; 
+	-o-border-radius:		: 5px;
+	border-radius			: 5px; 
+	border					: 1px solid #EDEDED;
+	padding					: 2px;
+	width					: 240px;
+	height					: 160px;
+	
+	background:-moz-linear-gradient(top, #eeeeee 0%, #ffffff 100%); /* firefox */
+  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#ffffff)); /* webkit */
+}
+
+.ui.components.vgrid .sr-item img {
+}
+
+.ui.components.vgrid .sr-info div {
+	padding: 2px;
+	margin: 2px;
+	background-color: #D6F6C8;
+	
+	-moz-border-radius		: 2px;
+	-webkit-border-radius	: 2px; 
+	-o-border-radius:		: 2px;
+	border-radius			: 2px; 
+}
+
+
+
+.ui.components.vgrid .no-search-results {
+
+}
+

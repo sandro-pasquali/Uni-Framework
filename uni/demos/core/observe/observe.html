@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			
+			.observe(	'myEvent', 
+						function(eD, cD) {
+							uni.notify('fired first observer');
+						})
+			
+			//	Add second observer, with an #id attribute in its call data object.
+			//	Use this to flag unobserve.
+			//
+			.observe(	'myEvent', 
+						function(eD, cD) {
+							uni.notify('fired second observer');
+						},
+						{
+							id: 'foo'
+						})
+			
+			//	Add third observer.  This one will use a namespaced anonymous function,
+			//	which will later be used to identify it for removal.
+			//
+			.namespace('observerFuncs', {
+				three: 	function(eD, cD) {
+							uni.notify('fired third observer');
+							uni.notify('with event data:');
+							uni.notify(eD);
+							uni.notify('...and the call data was:');
+							uni.notify(cD);
+						}
+			})
+
+			.within(function() {
+			
+				this
+					.observe('myEvent', uni.ns.observerFuncs.three)
+
+					//	Fire with some event data, which observer three will report.
+					//
+					.fire('myEvent', 'foo')
+		
+					//	Remove third observer by checking for its function signature.
+					//
+					.unobserve('myEvent', function(ob) {
+						return ob.fn === uni.ns.observerFuncs.three;
+					})
+					
+					//	Now third observer will not fire (does not exist);
+					//
+					.fire('myEvent')
+					
+					//	Remove second observer by checking for an id
+					.unobserve('myEvent', function(ob) {
+						return ob.id === 'foo';
+					})
+					
+					//	Now second observer will not fire (does not exist);
+					//
+					.fire('myEvent')
+				
+					//	Remove all remaining observers.
+					//
+					.unobserve('myEvent')
+					
+					//	This will show nothing
+					//
+					.fire('myEvent')
+					
+					.notify(uni)
+
+			});
+
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

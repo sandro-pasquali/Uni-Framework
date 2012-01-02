@@ -1,0 +1,43 @@
+#sys-opt-form-container, #sys-opt-info-container {
+	padding: 4px;
+}
+
+.sys-opt-help {
+	border		: 1px solid #EDEDED;
+	padding		: 10px;
+	font-size	: 12px;
+	display		: none;
+	
+	background:-moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%); 
+  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee)); 
+  	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#eeeeee',GradientType=0); 
+}
+
+.sys-opt-help H3 {
+	font-weight	: bold;
+	font-size	: 14px;
+	padding		: 4px 0 6px 0;
+}
+
+.input-container #sys-opt-test-notify-delay { 
+	margin-left: 40px;
+}
+
+#sys-opt-form li > label {
+	width: 180px;
+}
+
+
+#sys-opt-form .input-container {
+	padding-left: 200px;
+	width: auto;
+	height: 28px;
+}
+
+#sys-opt-form .help-but { 
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	color: green;
+}
+

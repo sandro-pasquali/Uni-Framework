@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/dom.js')
+			.require('core/notify.js')
+			.require('kits/fx.js')
+			.observe(function() {
+			
+				this
+					//	Run a search in the uni namespace. This will return a collection
+					//	of paragraph elements, which becomes the Subject value in uni.
+					//
+					.select('p')
+					
+					//	Run a dom method in the `fx` namespace, which will set the Subject
+					// 	in that namespace (to <h1>)
+					.fx
+						.findFirst('h1')
+					
+						//	Note how each namespace has their own Subject.
+						//
+						.notify('uni:')
+						.notify(this.$)
+						.notify('fx:')
+						.notify(this.fx.$)
+					
+					//	Branch execution based on some match condition.
+					//
+					.branch(function() {
+						return this.match('p', document.getElementById('second-paragraph'));
+					},
+					{
+						'true':		function() {
+							this.notify('matched');
+						},
+						'false':	function() {
+							this.notify('no match');
+						}
+					})
+					
+					.notify(uni.$)
+			})
+		
+		</script>
+		
+	</head>
+	<body>
+
+		<h1>Heading</h1>
+		<h2>Subheading</h2>
+		<p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie lacus at erat fringilla vestibulum. Integer viverra, arcu et bibendum viverra, mauris tellus rutrum quam, aliquam consequat magna diam sed nisi. Etiam gravida, justo eu fermentum bibendum, nunc turpis egestas purus, a rutrum dolor neque vel nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim leo quis lorem ultrices feugiat. Maecenas auctor adipiscing felis at posuere. Nulla ac urna turpis. Donec volutpat ultrices gravida. Nunc consectetur risus nec felis elementum consectetur. Integer rhoncus eleifend eros quis tincidunt. Nunc vel ullamcorper diam. Sed tempus mattis volutpat. Maecenas vitae cursus nisl. Nam eu risus enim, eget volutpat ligula. Aenean massa erat, pretium ac laoreet ac, dignissim ut elit. Proin nisi erat, porttitor a accumsan sit amet, euismod vitae sem. 
+			</p>
+			
+			<p id="second-paragraph" class="second">
+				Fusce eu leo velit. Aliquam sodales varius ante non blandit. Sed eu urna vel dolor bibendum viverra. Donec tempus ante id mi egestas luctus imperdiet velit faucibus. Aenean id purus magna, a porta eros. Quisque consectetur sollicitudin nunc sit amet lacinia. Donec libero nunc, lobortis nec adipiscing nec, ultrices sed massa. In commodo hendrerit velit sit amet blandit. Nulla venenatis sagittis lacus, ac facilisis magna tempus vel. Cras rutrum augue ut erat vulputate non consequat turpis feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at laoreet lorem. Sed gravida sem sed lacus elementum scelerisque. Praesent eget mi ipsum, sit amet imperdiet libero. 
+			</p>
+		</p>
+	
+	</body>
+</html>

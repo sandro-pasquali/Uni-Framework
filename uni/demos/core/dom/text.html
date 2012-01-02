@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+
+			//	Create a reference to a collection
+			//
+			var a = uni.spawn().select('#container3 li').$
+			
+				//	Get #text of all 
+				this
+					.select('#container3 li')
+					.text()
+
+				//	Get #text of a different Subject
+				this
+					.text(a)
+
+				
+				this
+					.text('Hi')
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="container1"></div>
+		<div id="container2"></div>
+		<div id="container3">
+			<li>1
+				<div>
+					<div>a</div>
+					<div>b</div>
+					<div>c</div>
+				</div>
+			</li>
+			<li>2</li>
+			<li>3</li>
+		</div>
+
+
+	</body>
+</html>

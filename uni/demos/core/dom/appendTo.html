@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				//	appendTo a single element via selector
+				//
+				this
+					.select('#list2 li')
+					.notify(this.$)
+					.appendTo('#list1')
+					
+				//	appendTo multiple elements via selector
+				//
+				this
+					.select('#group2 div')
+					.notify(this.$)
+					.appendTo('#group1 div')
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+		
+			<div class="ellipses">......</div>
+			
+			<div id="group1">
+				<div>one</div>
+				<div>two</div>
+				<div>three</div>
+			</div>
+			
+			<div id="group2">
+				<div>a</div>
+				<div>b</div>
+				<div>c</div>
+			</div>
+			
+			<div class="ellipses">......</div>
+			
+			<ul id="list1">
+				<li>item one</li>
+				<li>item two</li>
+				<li>item three</li>
+			</ul>
+			
+			<ul id="list2">
+				<li>item four</li>
+				<li>item five</li>
+				<li>item six</li>
+			</ul>
+			
+			<div class="ellipses">......</div>
+			
+		</div>
+
+	</body>
+</html>

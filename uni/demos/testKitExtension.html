@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		
+
+		
+		<script type="text/javascript" src="../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+var bad = {
+	extend:1,
+	sub:1,
+	require:1,
+	until:1
+}
+
+		uni
+			.require('core/dom.js')
+			.require('core/notify.js')
+			.sub(uni)
+			.map(function(e, i) {
+uni.notify(i)
+				if(uni.is(Function, e)) {
+				
+					var f = {};
+					f[i] = function() { uni.notify('>> ' + i) }
+				
+					if(!bad[i]) {
+						uni.addKit('sandro', f);
+						
+						uni.sandro[i]();
+						
+						try {
+							uni[i](1)
+							uni.notify('++ ' + e)
+						} catch(x) {
+							uni.notify(x);
+						}
+						
+					} else {
+						uni.notify('bad: ' + i);
+					}
+				}
+			})
+
+		
+		</script>
+		
+	</head>
+	<body>
+
+	</body>
+</html>

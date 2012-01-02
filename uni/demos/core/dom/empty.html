@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<style type="text/css">
+		
+			.group	{
+				padding: 	10px;
+				border: 1px solid red;
+			}
+		
+		</style>
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				this
+					.select('div#group1')
+					.empty()
+					.html('emptied...')
+					
+				this
+					.empty(document.getElementById('group2'))
+
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="group1" class="group">
+			<div>one</div>
+			<div>two</div>
+			<div>three</div>
+			<div>four</div>
+			<div>five</div>
+		</div>
+		
+		<br />
+		
+		<div id="group2" class="group">
+			<div>one</div>
+			<div>two</div>
+			<div>three</div>
+			<div>four</div>
+			<div>five</div>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,43 @@
+.ui.component.treenav, .ui.component.treenav ul, .ui.component.treenav li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.ui.component.treenav{}
+.ui.component.treenav ul{
+	display:none;
+}
+.ui.component.treenav li{
+	line-height:200%;
+	margin-top:1px;
+	background:#eee;
+	position:relative;
+	width:100%;
+}
+/* IE leaves a blank space where span is added so this is to avoid that */
+* html .ui.component.treenav li{
+	float:left;
+	display:inline;
+}
+
+.ui.component.treenav li a{padding-left:28px;}
+.ui.component.treenav li span{float:left;position:absolute;top:5px;left:5px;width:13px;height:13px;cursor:auto;font-size:0;}
+.ui.component.treenav li span, .ui.component.treenav li span.collapsed{background:url(../images/collapsed.gif) no-repeat 0 0;} 
+.ui.component.treenav li span.expanded{background:url(../images/expanded.gif) no-repeat 0 0;}
+
+/* second level */
+
+.ui.component.treenav li li{
+	background:#fff;
+}
+.ui.component.treenav li li a{padding-left:56px;}
+.ui.component.treenav li li span{left:28px;}
+
+/* third level */
+
+.ui.component.treenav li li li a{padding-left:84px;}
+.ui.component.treenav li li li span{left:56px;}
+
+/* etc. */
+
+/*  */

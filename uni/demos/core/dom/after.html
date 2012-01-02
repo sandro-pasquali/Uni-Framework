@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+			
+			
+				// 	Inserting some HTML #after each LI element
+				//
+				this
+					.select('li')
+					.notify(this.$)
+					.after('and <span>foo</span> bar');
+					
+					
+					
+									
+				//	A temporary collection
+				//
+				var tmp = this.spawn().select('b');
+				
+				//	Inserting the same element group #after multiple targets.
+				//
+				this
+					.select(".foobar")
+					.notify(tmp.$)
+					.after(tmp);
+					
+					
+
+				//	Inserting the results of a Function call #after each member
+				//	of a collection
+				this
+					.select('#group div')
+					.notify(this.$)
+					.after(function(i) { 
+						return '<li>' + i + '</li>'
+					})
+
+				
+				//	Inserting #after a general element reference.
+				//
+				this
+					.select('#bill')
+					.after(document.getElementById('identity'))
+					
+					
+				//	Inserting a group of elements fetched via selector prior
+				//	to multiple targets.
+				//
+				this
+					.select('.rainbow')
+					.notify(this.$)
+					.after('#words div')
+					.notify(uni.ns)
+					
+				})
+				
+		
+		</script>
+		
+	</head>
+	<body>
+			
+		<div>
+			<div id="words">
+				<div>Somewhere</div>
+				<div>over</div>
+				<div>the</div>
+			</div>
+			<div class="rainbow">rainbow1</div>
+			<div class="rainbow">rainbow2</div>
+			<div class="rainbow">rainbow3</div>
+		</div>	
+			
+		<div>
+			<div id="identity">I'm just</div>
+			<div id="bill">a bill</div>
+		</div>		
+		
+		<div>
+			<div id="group">
+				<div>one</div>
+				<div>two</div>
+				<div>three</div>
+			</div>
+		</div>
+		
+		<div>
+			<ul>
+				<li>item one</li>
+				<li>item two</li>
+				<li>item three</li>
+			</ul>
+		</div>	
+			
+		<div>
+			<b>One if by land</b>
+			<b>Two if by sea</b>
+		
+			<div class="foobar">The Redcoats</div>
+			<div class="foobar">are coming!</div>
+		</div>
+
+	</body>
+</html>

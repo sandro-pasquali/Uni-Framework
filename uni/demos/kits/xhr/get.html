@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+			
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('kits/xhr.js')
+			.require('core/notify.js')
+
+			.within(function() {
+
+				this
+					.xhr
+						
+						//	No callback argument, just complete, also showing how to pass
+						//	through data.
+						//
+						.get('get.html', {
+							async: 		true,
+							
+							//	This will pass through to `ob`, below.
+							//
+							here:		'there',
+							
+							complete:	function(data, ob) {
+								this
+									.notify(data)
+									.notify(ob)
+							}
+						})
+
+
+			
+			})
+
+			
+		</script>
+		
+	</head>
+	<body>
+	
+	<div id="test">
+	
+
+	</div>
+	
+	</body>
+</html>

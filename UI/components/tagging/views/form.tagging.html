@@ -1,0 +1,17 @@
+<div class="row">
+	<div dataType="data-player" class="ui controls button">Players</div><div dataType="data-team" class="ui controls button">Teams</div><div dataType="data-keywords" class="ui controls button">Keywords</div><div dataType="data-games" class="ui controls button">Games</div>
+</div>
+<!-- 	#tagType should be the tag type of the default autocomplete datasource. -->
+<div    class			= "ui components autocomplete" 
+		dataSource		= "playerData" 
+		filter_case 	= "false" 
+		filter_hide		= "true"  
+		firstselected	= "true" 
+		filter_selected	= "true" 
+		inputWidth      = "400" 
+		maxitems		= "6" 
+		newel			= "true" 
+		noPill			= "true" 
+		tagType			= "player_id" 
+	>
+</div>

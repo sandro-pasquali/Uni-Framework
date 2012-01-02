@@ -1,0 +1,161 @@
+/* TextboxList sample CSS */
+ul.fb-holder
+{
+	margin: 0;
+	border: 1px solid #999;
+	overflow: hidden;
+	height: auto !important;
+	padding: 4px 5px 0;
+	background: white;
+}
+
+*:first-child+html ul.fb-holder { padding-bottom: 2px; }
+* html ul.fb-holder { padding-bottom: 2px; }
+
+/* ie7 and below */
+ul.fb-holder li
+{
+	float: left;
+	list-style-type: none;
+	margin: 0 5px 4px 0;
+	white-space: nowrap;
+}
+
+ul.fb-holder li.bit-box, ul.fb-holder li.bit-input input { }
+
+/**
+ * Selected tag
+ */
+
+ul.fb-holder li.bit-box
+{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #CAD8F3;
+	background: #D6F6C8;
+	padding: 3px 5px 2px;
+}
+
+ul.fb-holder li.bit-box-focus
+{
+	border-color: #598BEC;
+	background: #598BEC;
+	color: #fff;
+}
+
+ul.fb-holder li.bit-input input
+{
+	width: auto;
+	overflow: visible;
+	margin: 0;
+	border: 0px;
+	outline: 0;
+	padding: 3px 0px 2px;
+}
+
+/* no left/right padding here please */
+ul.fb-holder li.bit-input input.smallinput { width: 20px; }
+
+.ui.components.autocomplete form ul { margin: 0 !important; }
+
+ul.fb-holder li.bit-box
+{
+	padding-right: 15px;
+	position: relative;
+	z-index: 100;
+}
+
+ul.fb-holder li.bit-hover
+{
+	background: #BBCEF1;
+	border: 1px solid #6D95E0;
+}
+
+ul.fb-holder li.bit-box-focus
+{
+	border-color: #598BEC;
+	background: #598BEC;
+	color: #fff;
+}
+
+ul.fb-holder li.bit-box a.closebutton
+{
+	position: absolute;
+	right: 4px;
+	top: 5px;
+	display: block;
+	width: 7px;
+	height: 7px;
+	font-size: 1px;
+	background: url('UI/components/autocomplete/css/images/close.gif');
+}
+
+ul.fb-holder li.bit-box a.closebutton:hover { background-position: 7px; }
+ul.fb-holder li.bit-box-focus a.closebutton, ul.fb-holder li.bit-box-focus a.closebutton:hover { background-position: bottom; }
+
+/* Autocompleter */
+.fb-a
+{
+    width: auto;
+	display: none;
+	position: absolute;
+	background: #eee;
+}
+
+.fb-a ul
+{
+	display: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	position: absolute;
+	z-index: 9000;
+}
+
+.fb-a ul li
+{
+	padding: 5px 12px;
+	cursor: pointer;
+	margin: 0;
+	list-style-type: none;
+	border: 1px solid #ccc;
+	border-width: 0 1px 1px;
+	background-color: #eee;
+	color: black;
+}
+
+.fb-a ul li em
+{
+	font-weight: bold;
+	font-style: normal;
+	background: #ccc;
+}
+
+.fb-a ul li.auto-focus
+{
+	background: #4173CC;
+	color: #fff;
+}
+
+.fb-a ul li.auto-focus em { background: none; }
+
+/**
+ * Tag that is queued for deletion (on next press of delete button)
+ */
+
+.fb-del
+{
+	background-color: red !important;
+	color: #ffffff !important;
+}
+
+.fb-ie6fix
+{
+	height: 1px;
+	width: 1px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}

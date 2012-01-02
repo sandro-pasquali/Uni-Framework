@@ -1,0 +1,98 @@
+<!-- 	Search options control. Contains a panel, which slides down with options.
+-->
+<div	id			= "search-options" 
+		class		= "ui components slidePanel" 
+		listensFor	= "click"
+       	offset		= "61" 
+       	panelWidth	= "710"
+       	panelHeight = "32"
+       	zIndex		= "201"
+       	style		= "float:left"
+>
+    <div    id      = "search-options-button" 
+            class   = "ui controls button panel-control panel-open panel-close" 
+    >
+        <div class="gui-icon gui-icon-searchoptions"></div>&nbsp;
+    </div>
+    <div class="container">
+        <div class="content">
+			<div 	id					= "search-options-select"
+					class				= "ui components template" 
+					style 				= "float:left" 
+					itemBinding 		= "search:types" 
+					templateDirective	= "UI/components/template/directives/search.types.json" 
+					controller			= "UI/components/template/controllers/search.types.js" 
+					listensFor			= "change" 
+			>
+				<form action="#" class="sizes">
+					<select id="search-types-control">
+						<option value=""></option>
+					</select>
+				</form>
+			</div>
+        </div>
+    </div>
+</div>
+
+<!-- 	This is the main search panel.  Here we establish the *autocomplete component (the search
+		box), the search options *panel, the search results *panel, and the *contextmenu
+		for the search results.
+-->
+<div    id          = "search-autocomplete"
+		class		= "ui components autocomplete"
+						
+		dataSource		= "teamAndPlayerData" 
+		filter_case 	= "false"
+		filter_hide		= "true"
+		firstselected	= "true"
+		filter_selected	= "true" 
+		inputWidth      = "600" 
+		maxitems		= "6"
+		newel			= "true" 
+>
+
+    <!--    This form is required for the autocomplete widget - you must have a single <form>
+            element within this view.
+            Note the floated styling.  Should probably move this out.
+    -->
+    <form style="float:left">
+        <select id="search-component-input"></select>
+    </form>
+
+    <div    id          = "search-results-panel" 
+            class	    = "ui components slidePanel" 
+            listensFor	= "click" 
+            offset      = "61" 
+            panelWidth  = "right" 
+            panelHeight = "#layout-footer" 
+            zIndex      = "101" 
+    >
+        <div    id      = "search-results-panel-icon-search" 
+                class   = "ui controls button panel-control panel-open panel-close"
+        >
+            <div class="gui-icon gui-icon-search"></div>&nbsp;
+        </div>
+
+        <!--    The slidePanel component requires a <#container> element containing a
+                <#content> element.
+        -->
+        <div class="container">
+            <div 	id			= "search-result-content-panel" 
+            		class		= "content ui components vgrid" 
+            		css			= "UI/components/vgrid/css/default.css" 
+            ></div>
+        </div>
+    </div>
+    
+    <!--
+    <div    id      = "search-results-panel-icon-clear" 
+            class   = "ui controls button" 
+    >
+        <div class="gui-icon gui-icon-error"></div>&nbsp;
+    </div>
+    -->
+    
+</div>
+
+
+

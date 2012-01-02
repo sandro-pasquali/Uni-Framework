@@ -1,0 +1,19 @@
+<form class="row">
+	<div class="row"> 
+		<div 	class		= "ui components tagging" 
+				view		= "UI/components/tagging/views/form.tagging.html" 
+				listensFor	= "change click" 
+				fieldPath	= "tags" 
+		></div>
+	</div>
+	<div class="row"> 
+		<div 	class		= "ui components list" 
+				controller	= "UI/components/list/controllers/form.list.js" 
+				fieldPath	= "items" 
+				sortable	= "true" 
+				pointer		= "true" 
+				acceptsDrop	= "div[itemId]" 
+				duplicates	= "false"
+		></div>
+	</div>
+</form>

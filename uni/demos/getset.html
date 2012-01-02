@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript">
+
+
+var lost = {
+	loc : "Island",
+	get location () {
+		alert('get1');
+		return '11111';
+	},
+	set location(val) {
+		alert('set1: ' + val)
+	}
+};
+lost.location = "Another island";
+var bbb = lost.location;
+alert(bbb);
+
+/*
+var cheesecake = {}
+Object.defineProperty(cheesecake, "description", {
+	get : function () {
+		alert('get')
+		return '22'
+	},
+	set : function (val) {
+		alert(val)
+	}
+});
+
+cheesecake.description = 1
+var cc = cheesecake.description;
+alert(cc);
+*/
+		</script>
+		
+	</head>
+	<body>
+
+	</body>
+</html>

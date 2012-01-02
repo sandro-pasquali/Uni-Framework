@@ -1,0 +1,9 @@
+{
+  	"option": {
+		"size <- sizes": {
+	  		".": "#{size.val} - #{size.name}",
+	  		"@value": "size.val",
+	  		"@selected": "size.sel"
+		}
+	}
+}

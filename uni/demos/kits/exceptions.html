@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<script type="text/javascript" src="../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('kits/exceptions.js', function() {
+				this
+				
+					//	You can watch for certain errors.  Note the 'exception:' prefix.
+					//
+					.observe('exception:testException', function(t) { 
+						uni.notify(t);
+					}, 
+					{
+						greedy: false
+					})
+				
+					.exceptions
+					
+						.create('testException')
+						
+						//	This is not recommended, but you can always fire an exception 
+						//	in the chain.
+						//
+						.testException('errorsssss')
+				
+				//	This is the most likely usage, within your try/catch blocks.
+				//
+				try {
+					throw new uni.exceptions.testException('foo')
+				} catch(e) {
+					
+					//	You can check the exception type if multiple throws.
+					//
+					uni.notify(uni.is(uni.exceptions.testException, e));
+					
+					//	.name and .message are set
+					//
+					uni.notify(e);
+				}
+
+			})
+
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+
+	</body>
+</html>

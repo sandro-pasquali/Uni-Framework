@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+
+			.within(function() {
+
+				var one 	= this.spawn();
+				var two 	= this.spawn();
+				var three 	= this.spawn();
+
+				one.extend('test', 		function() { uni.notify('one') });
+				two.extend('test', 		function() { uni.notify('two') });
+				three.extend('test',	function() { uni.notify('three') });
+				
+				uni.extend('test', 		function() { uni.notify('uni') });
+				
+				one.test();
+				two.test();
+				three.test();
+				
+				uni.test();
+			});
+
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

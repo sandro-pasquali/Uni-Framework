@@ -1,0 +1,148 @@
+<!-- 	Bring in a style sheet 
+-->
+<div class="ui components layout" css="UI/components/form/css/system.options.css" ></div>
+
+<div 	id			= "sys-opt-container" 
+		class		= "ui components form row" 
+		controller 	= "UI/components/form/controllers/system.options.js" 
+		itemBinding	= "system:options" 
+		listensFor	= "change click"
+>
+	<div class="column grid_8">
+		<div id="sys-opt-form-container">
+			<form id="sys-opt-form" class="rounded-corners-5">
+			
+				<fieldset>
+					<legend>Credentials</legend>
+					<ol>
+						<li class="form-list-item">
+							<label for="opt-cred-1">
+								Select Domain <span id="opt-info-1" class="help-but">[?]</span>
+							</label>
+							<div 	id		= "domain-data-select-template"
+									class	= "ui components template input-container" 
+
+									templateDirective	= "UI/components/template/directives/set.credentials.domain.select.json" 
+									controller			= "UI/components/template/controllers/set.credentials.domain.select.js"
+							>
+								<select id="opt-cred-1" class="domains" fieldPath="appId">
+									<option value="">Loading...</option>
+								</select>
+							</div>
+						</li>
+						<li class="form-list-item">
+							<label for="opt-cred-2">
+								Logout <span id="opt-info-2" class="help-but">[?]</span>
+							</label>
+							<div class="input-container">
+								<div id="logout-partial" class="ui controls button">
+									Clear Login Data
+								</div>
+								<div id="logout-full" class="ui controls button">
+									Clear Login and Session Data
+								</div>
+							</div>
+						</li>
+					</ol>
+				</fieldset>
+			
+				<fieldset>
+					<legend>UI Options</legend>
+					<ol>
+						<li class="form-list-item">
+							<label for="opt-ui-1">
+								Subitem UI Control <span id="opt-info-3" class="help-but">[?]</span>
+							</label>
+							<div class="input-container">
+								<select id="opt-ui-1" name="opt-ui-1" fieldPath="subItemControlType">
+									<option value="tabs">Horizontal Tabs</option>
+									<option value="vtabs">Vertical Tabs</option>
+									<option value="accordion">Accordion</option>
+								</select>
+							</div>
+						</li>
+						<li class="form-list-item">
+							<label for="opt-ui-2">
+								Notification Delay <span id="opt-info-4" class="help-but">[?]</span>
+							</label>
+							<div class="input-container">
+								<div 	class	= "ui controls buttonset" 
+								>
+									<input type="radio" id="n-del-3" name="n-del" value="3" fieldPath="notificationDelay" /><label for="n-del-3">3</label>
+									<input type="radio" id="n-del-5" name="n-del" value="5" fieldPath="notificationDelay" /><label for="n-del-5">5</label>
+									<input type="radio" id="n-del-7" name="n-del" value="7" fieldPath="notificationDelay" /><label for="n-del-7">7</label>
+									<input type="radio" id="n-del-10" name="n-del" value="10" fieldPath="notificationDelay" /><label for="n-del-10">10</label>
+									<input type="radio" id="n-del-15" name="n-del" value="15" fieldPath="notificationDelay" /><label for="n-del-15">15</label>
+									<div id="sys-opt-test-notify-delay" class="ui controls button">
+										Test Delay
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="form-list-item">
+							<label for="opt-ui-3">
+								Search Results Per Page <span id="opt-info-5" class="help-but">[?]</span>
+							</label>
+							<div class="input-container">
+								<div 	class	= "ui controls buttonset" 
+								>
+									<input type="radio" id="srpp-10" name="search-results-per-page" value="10" fieldPath="searchMaxResults" /><label for="srpp-10">10</label>
+									<input type="radio" id="srpp-20" name="search-results-per-page" value="20" fieldPath="searchMaxResults" /><label for="srpp-20">20</label>			
+									<input type="radio" id="srpp-30" name="search-results-per-page" value="30" fieldPath="searchMaxResults" /><label for="srpp-30">30</label>
+									<input type="radio" id="srpp-40" name="search-results-per-page" value="40" fieldPath="searchMaxResults" /><label for="srpp-40">40</label>
+								</div>
+							</div>
+						</li>
+					</ol>
+				</fieldset>
+				
+				<fieldset>
+					<legend>System Options</legend>
+					<ol>
+						<li class="form-list-item">
+							<label for="opt-sys-1">
+								Use Component Caching <span id="opt-info-6" class="help-but">[?]</span>
+							</label>
+							<div class="input-container">
+								<input type="checkbox" id="opt-sys-1" name="opt-sys-1" fieldPath="cacheComponentFiles" />
+							</div>
+						</li>
+					</ol>
+				</fieldset>
+				
+			</form>
+		</div>
+	</div>
+	<div class="column grid_4">
+		<div id="sys-opt-info-container">
+			<div class="sys-opt-help opt-info-1 rounded-corners-5">
+				<h3>Select Domain</h3>
+				Indicate which CMS domain CMS you would like to use.  This means you will be searching and manipulating CMS items in that domain.
+			</div>
+			<div class="sys-opt-help opt-info-2 rounded-corners-5">
+				<h3>Logout</h3>
+				This machine has your login data stored. It also has stored the items you've been looking at and other data that you have pulled from the database during this session.  If you feel your session data is sensitive, clear both your login and session data.  If you want to keep your session data so that you can resume from where you left off, just clear your login data. 
+			</div>
+			<div class="sys-opt-help opt-info-3 rounded-corners-3">
+				<h3>Subitem UI Control</h3>
+				Within an item you may have several subitems. Those can be arranged in tabs, or within an accordion.  Choose which here.
+			</div>
+			<div class="sys-opt-help opt-info-4 rounded-corners-3">
+				<h3>Notification Delay</h3>
+				<p>
+					Sets the number of seconds a system notification will be displayed prior to disappearing.
+				</p>
+			</div>
+			<div class="sys-opt-help opt-info-5 rounded-corners-3">
+				<h3>Search Results Per Page</h3>
+				<p>
+					The number of results that will appear on a single page after you perform a search.
+				</p>
+			</div>
+			<div class="sys-opt-help opt-info-6 rounded-corners-3">
+				<h3>Component Caching</h3>
+				As components are loaded their packaged files can be cached, such that reloading the component pulls the packaged files from cache instead of fetching them remotely via a service call. This speeds up responsiveness, and should always be on, except when debugging, where cache-busting can helpfully limit the amount of manual cache refreshes necessary.
+			</div>
+		</div>
+	</div>
+</div>

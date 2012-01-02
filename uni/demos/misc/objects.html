@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<script type="text/javascript" src="../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/notify.js', function() {
+			
+				var Animal 	= 	this.spawn(),		
+					Cow		= 	Animal.spawn();
+					
+				Animal
+					.extend('speak', function(s) {
+						this
+							.notify('Animals say: ' + s)
+					})
+					.speak('Hello!')
+					
+				Cow
+					.extend('speak', function(s) {
+						this
+							.notify('Cows say: ' + s)
+					})
+					.speak('Moooooo!');
+					
+				Animal
+					.speak('Again, hello!');
+	
+	
+				var ar = [];
+				for(var w=0; w < 10; w++) {
+				
+					ar[w] = Animal.spawn();
+					ar[w]
+						.speak(ar[w].ns._.id);
+				}
+					
+				//	Note how Animal (spawned from uni) and Cow
+				// 	(spawned from Animal) and of course Uni itself,
+				//	all now have been given the #foo method.
+				//
+				uni.hoist('foo', function() { 
+					this
+						.notify('foo')
+				})
+				
+				.notify('Animal, Cow, then uni, all call the hoisted method #foo');
+				
+				Animal.foo();
+				Cow.foo();
+				
+				uni.foo()
+			
+			
+				.notify('The Animal object. Note its .ns._.children:')
+				.notify(Animal)
+				
+				.notify('the Cow object. Note its .ns._.parent')
+				.notify(Cow)
+				
+				.notify('uni itself... with one child.')
+				.notify(uni)
+			});
+
+			
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

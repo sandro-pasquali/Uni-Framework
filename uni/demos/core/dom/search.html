@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<!-- css loading to be added to framework -->
+		<link href="../../components/treenav/css/treenav.css" rel="stylesheet" type="text/css" media="screen" />
+
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/event.js')
+			.require('core/dom.js')
+			.require('kits/xhr.js')
+			
+			.observe(function(eD, cD) {
+				this
+					//	Subject now all div's.
+					//
+					.select('div')
+					.notify(this.$)
+					
+					//	Filter out any that don't have a certain id.
+					//
+					.filter('#dummy_container')
+					.notify(this.$)
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+		
+			<div class="ui component toggle"></div>
+			
+			<div 	class		= "ui component treenav" 
+					datasource	= "../../components/treenav/demo_treenav.html"
+			></div>
+			
+			
+		</div>
+
+	</body>
+</html>

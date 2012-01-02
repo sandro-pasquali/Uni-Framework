@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('kits/store.js')
+			.require('core/notify.js')
+			.require('kits/linq.js')
+			.require('kits/data.js')
+			.observe('data:ready', function() {
+
+				var teamData = uni.store.get("data:teamData");
+
+				this
+					.linq
+						.sub(teamData)
+						.Select(function(item) { 
+							if(item.t == "NYY") {
+								return item;
+							}
+						})
+						.Where(function(item, i) { 
+							return item.n == "Alex Rodriguez";
+						})
+						.notify(this.linq.$)
+						
+						.sub(teamData)
+						.Select(function(item) { 
+							if(item.t == "NYY") {
+								return item.n;
+							}
+						})
+						.Where(function(item, i) {
+							return item.toLowerCase().charAt(0) == 'a';
+						})
+						.save('players')
+						.OrderByDescending(function(item) { 
+							var ns = item.split(' ');
+							return ns[ns.length -1];
+						})
+						.notify(this.linq.$)
+						.notify(this.linq.ns.players.$)
+
+			});
+
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

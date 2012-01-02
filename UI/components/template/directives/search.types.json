@@ -1,0 +1,9 @@
+{
+  	"option": {
+		"t <- types": {
+	  		".": "#{t.txt}",
+	  		"@value": "t.val",
+	  		"@selected": "t.sel"
+		}
+	}
+}

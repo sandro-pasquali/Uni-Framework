@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		//	Set up a Subject, and queue some operations.
+		//
+		uni
+			.require('core/notify.js')
+			.within(function() {
+		
+				this
+					.sub([1,1,1,1,1,1])
+					.queue(	'myQ', 
+							'filter', 
+							function() { 
+								return parseInt(Math.random() *10) > 4 ? 1 : 0;	
+							})
+					.queue(	'myQ', 
+							'within', 
+							function() {
+								uni.notify(uni.$);
+							})
+					.queue(	'myQ', 
+							'reduce', 
+							function(a, i) {
+								return a + i;
+							}, 
+							0) 
+				
+					// 	No change; nothing has executed.
+					//
+					.notify(uni.$)
+					
+					//	Run the queue
+					//
+					.runQueue('myQ')
+					
+					//	Methods have executed.
+					//
+					.notify(uni.$)
+
+					//////////////////////////////////////////////////////////////
+					
+					//	Now do the same thing, but keep the queue, and run it a few times.
+					//
+						
+					//	Set up a Subject, and queue some operations.  *** We also store the subject ***
+					//
+
+					.sub([2,2,2,2,2,2])
+					.save('queue_test')
+					.queue(	'myQ', 
+							'filter', 
+							function() { 
+								return parseInt(Math.random() *10) > 4 ? 1 : 0;	
+							})
+					.queue(	'myQ', 
+							'within', 
+							function() {
+								uni.notify(uni.$);
+							})
+					.queue(	'myQ', 
+							'reduce', 
+							function(a, i) {
+								return a + i;
+							}, 
+							0)
+				
+					//	Run the queue *** Note that we are here keeping the queue ***
+					//
+					.runQueue('myQ', true)
+				
+					//	Methods have executed.
+					//
+					.notify(uni.$)
+		
+					//	... and again, bringing back the original subject.
+					//
+					.sub(uni.ns.queue_test.$)
+					.notify(uni.is(Array, uni.$))
+					.runQueue('myQ', true)
+				
+					//	Methods have executed.
+					//
+					.notify(uni.$)
+		
+					//	... and again, with a different subject.
+					//
+					.sub([32,32,32,32,32,32])
+					.runQueue('myQ', true)
+				
+					//	Methods have executed.
+					//
+					.notify(uni.$)
+		
+					///////////////////////////////////////////
+					
+					//	Using #dequeue
+					//
+					//	First, remove only a selected queue item.
+					//	Next, clear the entire queue. 
+					//	#dequeue accept a filter method, which is 
+					//	applied to each member of the queue, and which receives two arguments.
+					//	First, the name of the currently queued method. Second, the arguments
+					//	which were bound to the queued method. #reduce is in our queue. 
+					//	#reduce accepts two arguments (its reduce method, and the accumulator).
+					//	So we can see how our filter will remove *only* the #reduce method,
+					//	as it is the only queued item which will have 2 arguments bound, and
+					//	so is the only item which will have the [1] index set.
+					//		
+					.dequeue('myQ', function(n, a) {
+						return 1 in a;
+					})
+		
+					//	Check what is in the queue (do this by running a filter which never returns true).
+					//	Should have a two item list now, -reduce
+					//
+					.save('queueStore', '')
+					.notify('In the queue:')
+					.dequeue('myQ', function(n, a) { 
+						this
+							.ns
+								.queueStore
+									.$ += ' ' + n
+					})
+					.notify(uni.ns.queueStore.$)
+		
+					//	Clear the remaining items.
+					//
+					.dequeue('myQ')
+					
+					//	Queue should now be empty
+					//
+					.notify('Should see nothing below after dequeue runs:')
+					
+					.dequeue('myQ', function(n, a) {
+						this
+							.notify(n);
+					})
+
+					
+			}); // end within
+			
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

@@ -1,0 +1,66 @@
+.ui.components.list ul
+{
+	list-style-type	: none;
+	margin			: 0;
+	padding			: 0;
+	width			: inherit;
+	
+	/* 	In order to ensure that there is something to drop onto when the list is empty,
+	 *	we assign a min height.  The multiple declarations are to accomodate IE7.  
+	 */
+	min-height	: 32px;
+	height		: auto !important;
+	height		: 32px;
+}
+
+.ui.components.list ul li.trimmed {
+	margin	: 0;
+	padding	: 0;
+	border	: 0;
+}
+
+.ui.components.list ul li
+{
+	margin		: 0 3px 3px 3px;
+	padding		: 2px;
+	height		: auto;
+}
+
+.ui.components.list ul li.with-arrows
+{
+	padding-left	: 1.5em;
+}
+
+.ui.components.list ul li.pointer
+{
+	cursor	: pointer;
+}
+
+.ui.components.list ul li span
+{
+	position	: absolute;
+	margin-left	: -1.3em;
+}
+
+.ui.components.list .item-tile {
+	height				: 32px;
+	white-space			: nowrap;
+	overflow			: hidden;
+	text-overflow		: ellipsis;
+	-o-text-overflow	: ellipsis;
+	font-weight			: normal;
+	font-size			: 9px;
+}
+
+.ui.components.list ul.isFixed {
+	position        : fixed;
+}
+
+/**
+ * 	For list controls withing forms, being the style to be applied to the element which
+ * 	is ultimately appended to the list (<li>). 
+ */
+.ui.components.list .droppedItem {
+	border: 1px red solid;
+}
+

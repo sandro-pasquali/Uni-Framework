@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		//	Ultimately all of this will exist in its own kit
+		//
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				this
+				
+					.sub([1,2,3,4,5])
+					.eq(3)
+					.notify(this.$)
+					
+					.sub([1,2,3,4,5])
+					.eq(-1)
+					.notify(this.$)
+					
+					.sub([1,2,3,4,5])
+					.eq(-3)
+					.notify(this.$)
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+
+	</body>
+</html>

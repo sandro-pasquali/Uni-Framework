@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Uni Framework</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+
+    <link type="text/css" href="UI/style/css/global.css" media="screen" rel="stylesheet" />
+    
+    <script type="text/javascript" src="UI/jquery-1.5.2.js"></script> 
+    <script type="text/javascript" src="UI/plugins/sajax/sexy.js"></script>
+    <script type="text/javascript" src="UI/plugins/uniform/js/uniform.js"></script>
+    <script type="text/javascript" src="UI/plugins/jquery-ui/js/jquery-ui-1.8.6.custom.js"></script>
+	<script type="text/javascript" src="UI/plugins/controls/js/controls.js"></script>
+    
+    <script type="text/javascript" src="uni/core/uni.js"></script>
+    <script type="text/javascript" src="uni/core/notify.jquery.js"></script>
+    <script type="text/javascript" src="uni/core/loggingAdvice.js"></script>
+    <script type="text/javascript" src="uni/kits/date.js"></script>
+    <script type="text/javascript" src="uni/kits/store.js"></script>
+    <script type="text/javascript" src="uni/kits/data.js"></script>  
+    <script type="text/javascript" src="uni/kits/styles.js"></script>
+    <script type="text/javascript" src="uni/kits/template.js"></script>
+    <script type="text/javascript" src="uni/kits/components.js"></script>
+    <script type="text/javascript" src="uni/kits/binary.js"></script>
+    <script type="text/javascript" src="uni/kits/exif.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+
+</head>
+
+<body>
+
+<!--	All other components are descendants of this component.  As such this component's
+		controller can listen for all sub-component events.  As it stands, the main purpose
+		of this controller is to observe global events, such as requests for #main-layer rebind,
+		context menu requests for for editors on an itemId, and others.
+-->
+<div 	id			= "global-layout-container" 
+		class		= "ui components controlGroup"
+		controller	= "UI/components/controlGroup/controllers/global.controller.js" 
+		listensFor  = "click"
+>
+	<!--	Header container row.  This page is laid out with a header and main body, with
+			a floating footer.  This header contains, mainly, search controls.
+	-->
+	<div 	id		= "layout-header" 
+			class	= "row ui components layout" 
+	>
+		<div	id		= "layout-header-top" 
+				class	= "row"
+		>
+			<div	id			= "layout-section-toolbar" 
+					class		= "ui components controlGroup column grid_11" 				
+					view		= "UI/components/controlGroup/views/ui.toolbar.html"
+					controller  = "UI/components/controlGroup/controllers/ui.toolbar.js" 
+					listensFor	= "click" 
+					
+					style		= "float:left;"
+			></div>
+			<div	id			= "header-info-top" 
+					class		= "ui components layout column grid_1" 
+					controller	= "UI/components/layout/controllers/header.top.js"
+			></div>
+		</div>
+		<div	id		= "layout-header-bottom" 
+				class	= "row"
+		>
+			<!--	The layout for Search controls.
+			-->
+			<div 	id			= "layout-header-search" 
+					class       = "ui components layout column grid_11" 	
+					listensFor	= "click change" 		
+					view        = "UI/components/layout/views/ui.search.html" 
+					controller  = "UI/components/layout/controllers/ui.search.js" 
+			></div>
+			
+			<div	id		= "header-info-bottom" 
+					class	= "ui components layout column grid_1"
+			></div>
+		</div>
+	</div>
+
+	
+	<!--	This is the main layout file.  The goal here is to contain all the HB layouts 
+			as layout components, and switching out this container dynamically as the
+			HB sections are navigated.  You should not change the #id, as we want to maintain
+			a predictable selector for this node. 
+	-->
+
+	<div	id		= "main-layout" 
+			class	= "row-scrolling ui components layout" 
+	></div>
+
+	<!--	This footer contains both the region used by #panel directives in components
+			loaded into the #main-layout container, and general interface controls.  The
+			footer floats, remaining on the bottom of the page.  As such, it is not
+			in the flow. NOTE: DO NOT CHANGE THE ID OF THIS ELEMENT. It is required.
+	-->
+	<div 	id		= "layout-footer" 
+			class	= "ui components footerBar" 
+	>
+		<div 	id			= "ui-control-panel" 
+				class		= "ui components controlPanel" 
+				controller	= "UI/panels/controller.js" 
+				listensFor	= "click" 
+		</div>
+	</div>
+</div> 	
+<!--	End #global-layout-container 
+-->
+
+<!-- 	This is the global context menu component, which is active on item tiles. 
+-->
+
+<div 	id			= "upload-context-menu" 
+		class		= "ui components contextmenu" 			
+		view 		= "UI/components/contextmenu/views/item.result.html" 
+		controller	= "UI/components/contextmenu/controllers/item.result.js" 		
+		boundTo		= "body" 
+></div>
+
+</body>
+</html>

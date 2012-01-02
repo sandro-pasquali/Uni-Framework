@@ -1,0 +1,31 @@
+<div class="column grid_5">
+	<div 	id			= "view-photo-upload" 
+			class 		= "ui components upload" 
+			css         = "UI/components/upload/css/plupload.queue.css" 
+			controller 	= "UI/components/upload/controllers/queue.js" 
+			
+			listensFor  = "click" 
+	>
+	
+		<form METHOD="POST" enctype="multipart/form-data">
+		</form>
+				
+	</div>
+</div>
+<div class="column grid_7">
+	<div 	id		= "upload-metadata-list" 
+			class  	= "ui components list" 
+			style	= "margin-top:8px; margin-right:8px;" 
+			
+			listensFor = "click" 
+			
+			controller	= "UI/components/list/controllers/upload.photo.list.js"
+	>
+		<!-- List component needs a container.  
+		-->
+		<ul id="upload-list"></ul>
+	</div>
+</div>
+
+
+

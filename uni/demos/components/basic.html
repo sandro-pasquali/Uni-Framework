@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<!-- css loading to be added to framework -->
+		<link href="../demo_files/treenav/css/treenav.css" rel="stylesheet" type="text/css" media="screen" />
+
+		<script type="text/javascript" src="../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		//	Ultimately all of this will exist in its own kit
+		//
+		uni
+			.require('core/notify.js')
+			.require("core/domReady.js")
+			.require("core/selector.js")
+			.require('core/event.js')
+			.require('core/dom.js')
+			.require('kits/xhr.js')
+			
+			.observe('domReady', function(eD, cD) {
+				this
+					.select('.ui.component')
+					.filter(function(e) {
+						
+						if(uni.match('.toggle', e)) {
+						
+							uni.element('div', {
+							
+								attr:		['id', 'a_toggle'],
+								
+								html:		['Click me'],
+								
+								event:		['click', 	function() {
+															alert('Hi!');
+														}],
+								addClass:	['foo bar']
+							});		
+						}
+						
+						if(uni.match('.treenav', e)) {
+							this.require('demos/demo_files/treenav/js/treenav.js', function() {
+								this
+									.xhr
+										.get(e.getAttribute('datasource'), {
+											complete: function(data, ob) {
+												e.innerHTML = data;
+												demoNav()
+											}	
+										})	
+							})
+						}
+					})
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+		
+			<div class="ui component toggle"></div>
+			
+			<div 	class		= "ui component treenav" 
+					datasource	= "../demo_files/treenav/demo_treenav.html"
+			></div>
+			
+			
+		</div>
+
+	</body>
+</html>

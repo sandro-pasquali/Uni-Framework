@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<style type="text/css">
+		
+			#hi {
+			
+				width: 100px;
+				height: 100px;
+				background: purple;
+			}
+			
+			#ho {
+			
+				background: red;
+			}
+		
+		</style>
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			//.require('core/loggingAdvice.js')
+			.require('core/notify.js')
+			.require('core/event.js')
+			.require('core/dom.js')
+			.observe(function() {
+			uni.notify('observe has fired');
+				this
+					.event('click', '#hi', uni.noop)
+					.event('click', '#hi')
+						
+					.event('click', '#hi', function(ev, data, trig) {
+						uni.notify(ev);
+						uni.notify(data);
+						uni.notify(trig);
+					}, 'somedata')
+							
+					.event('click', '#ho', function(ev, data, trig) {
+						uni.notify('ho');
+					})
+					
+					//	Generalized, all div's
+					//
+					.event('mousedown', 'div', function(ev, data, trig) {
+						uni.notify('mdown');
+					})
+							
+					//	Fire an event on #ho, passing some data along.
+					//
+					.trigger('click', '#hi', 'sandro')
+
+						
+			});
+			
+		</script>
+		
+	</head>
+	<body>
+	
+	<div id="ho">
+		ho
+		<div id="hi">
+			hi
+		</div>
+	</div>
+	
+	</body>
+</html>

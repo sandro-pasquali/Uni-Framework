@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+				
+				//	Setting one property
+				//
+				this
+					.sub(document.getElementById('d1'))
+					.data('foo', 'bar')
+							
+				//	Setting another
+				//
+					.sub(document.getElementById('d1'))
+					.data('rock', 'star')
+				
+				// Setting `bar` property across several elements.
+				//
+					.select('.d')
+					.data('bar', 'foo')
+				
+				// 	Getting value of `bar` on entire Subject collection.
+				//
+					.restore()
+					.data('bar')
+					.notify(this.$)
+				
+				//  Getting all values
+				//
+					.restore()
+					.data()
+					.notify(this.$);
+
+				uni.notify(uni.toArray('sandro'))
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div class="d" id="d1">one</div>
+		<div class="d" id="d2">two</div>
+
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		var _foo_ = ['one','two','three',['a','b','c',['x','y','x']]];
+		uni.sub(_foo_);
+		
+		sandro = uni.spawn()
+				
+		uni
+			.require('core/notify.js')
+			.require('dummy_data/filters.js')
+			.require('dummy_data/dummy2.js')
+			.save('hi')
+			
+			.require('dummy_data/dummy3.js', function() {
+				this
+					.map(function(i) {
+						return 3;
+					})
+					.foo3(); // extension in dummy3.js
+
+				sandro
+					.require('dummy_data/dummy4.js', function() {
+						this
+							.notify(this.$)
+							.sub(_foo_)
+							.notify('fooooo')
+							.notify(_foo_)
+							.map(function(i) {
+								return 4;
+							})
+							.notify(this.$)
+							.filter(function() {
+								return (Math.random() *10) > 5 ? 1 : 0;	
+							})
+							.notify(sandro.$);
+					})
+					.map(function() {
+						this
+							.notify(this.ns._.id);
+					})
+					
+					.within(function() {
+						this
+							.foo4()	// extension in dummy4.js
+					});
+									
+
+				sandro
+					.branch(function() {
+						return 1;
+					}, 
+					{
+						'true': 	function() {  
+							sandro
+								.map(function() {
+									return true;
+								})
+						},
+						'false': 	function() {  
+							sandro
+								.map(function() {
+									return false;
+								})
+						},
+						1: 			function() {  
+							sandro
+								.map(function() {
+							
+									this
+										.notify('ran last map');
+							
+									return 1;
+								})
+						}
+					});
+					
+				sandro
+					.extend('blargh', function() {
+						this
+							.notify('blargh');
+					})
+					.blargh()
+ 
+				
+			})
+
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

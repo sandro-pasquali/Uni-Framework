@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		<script type="text/javascript">
+		
+		uni
+			.require('core/dom.js')
+			.observe(function() {
+			
+				this
+					.select('ul li')
+					.html(function(i, h) {
+
+						return '<b><a href="' + h + '.html">' + h + '()</b></a>'
+						
+					});
+			
+			});
+		
+		</script>
+		
+	</head>
+	<body>
+			
+		<ul>
+			<li>add</li>
+			<li>addClass</li>
+			<li>after</li>
+			<li>andSelf</li>
+			<li>append</li>
+			<li>appendTo</li>
+			<li>attr</li>
+			<li>before</li>
+			<li>children</li>
+			<li>clone</li>
+			<li>data</li>
+			<li>dom</li>
+			<li>element</li>
+			<li>empty</li>
+			<li>eq</li>
+			<li>find</li>
+			<li>first</li>
+			<li>hasClass</li>
+			<li>html</li>
+			<li>insertAfter</li>
+			<li>insertBefore</li>
+			<li>last</li>
+			<li>nextAll</li>
+			<li>nextUntil</li>
+			<li>parent</li>
+			<li>prepend</li>
+			<li>prependTo</li>
+			<li>prevAll</li>
+			<li>prevUntil</li>
+			<li>removeData</li>
+			<li>search</li>
+			<li>text</li>
+		</ul>
+
+	</body>
+</html>

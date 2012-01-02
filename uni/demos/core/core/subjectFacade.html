@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require("core/notify.js")
+			.require("kits/xhr.js")
+			.within(function() {
+
+				var one 	= this.spawn();
+				var two 	= this.spawn();
+				var three 	= this.spawn();
+				
+				var xhr = uni.xhr.getJson("../../testData/json.js", function(d) {
+					
+					
+					one.sub(d).createSubjectFacade(d);
+					console.log(one.$);
+					console.log(one.get("item.@id"));
+					
+					one.sub(one.get("item.@id"));
+					console.log(one.$);
+					console.log(one.get("item.@id"));
+					
+					one.addKit("data", {
+						"foo":	function() {
+							console.log("data kit");
+						}
+					});
+					
+					one.data.foo();
+					console.log(one.get("item.@id"));
+					
+					one.data.sub().createSubjectFacade(d, 1);
+					console.log(one.data.get("item.@id"));
+					
+					one.set("item.@id", "bar");
+					
+					console.log(one.get("item.@id"));
+					console.log(one.data.get("item.@id"));
+					
+					console.log(one.$);
+					console.log(one.get("item.@id"));
+					console.log(one.data.get("item.@id"));
+					
+					one.get("item");
+					console.log(one.$);
+				});				
+			});
+
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

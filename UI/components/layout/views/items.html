@@ -1,0 +1,22 @@
+<!-- The item list 
+-->
+<div 	id			= "items-list" 
+		class 		= "ui components list column grid_2" 
+		controller 	= "UI/components/list/controllers/items.list.js" 
+		listensFor  = "click" 
+		arrows		= "false" 
+		sortable	= "false" 
+		pointer		= "true" 
+		fixed		= "true"
+>
+	<!-- Necessary to keep width as this list gets a fixed position. 
+	-->
+	<div style="height:0px; width: auto; border: 1px white solid;"></div>
+</div>
+
+<!--	The current item, usu. a form.
+-->
+<div 	id			= "items-current" 
+		class		= "ui components form column grid_10"  	
+>
+</div>

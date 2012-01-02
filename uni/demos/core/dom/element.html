@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<style type="text/css">
+		
+			.foo {
+				color: blue;
+			}
+		
+		</style>
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		//	Ultimately all of this will exist in its own kit
+		//
+		uni
+			.require('core/notify.js')
+			.require('core/event.js')
+			.require('core/dom.js')
+			.require('kits/xhr.js')
+			
+			.observe(function(eD, cD) {
+				this
+					.select('.ui.component')
+					.filter(function(e, i) {
+
+						if(uni.match('.toggle', e)) {
+						
+							uni.element('div', {
+							
+								attr:		['id', 'a_toggle'],
+								
+								html:		['Click me'],
+														
+								addClass:	['foo bar'],
+								
+								event:		['click', 	function() {
+															alert('Hi!');
+														}]
+							})		
+							
+							
+							//	Same sort of thing, but using function arguments 
+							//	where applicable.
+							//
+							uni.element('div', {
+							
+								html:		[	function(i, c) {
+													return 'not here'
+												}],
+												
+								attr:		['foo', {hi:'there'}],
+
+								addClass:	[	function(i, c) {
+													return 'and now for some classes';
+												}]
+							})
+						}
+					})
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+		
+			<div class="ui component toggle"></div>
+			
+		</div>
+
+	</body>
+</html>

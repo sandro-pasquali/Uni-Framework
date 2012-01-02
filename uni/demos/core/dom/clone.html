@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				//	appendTo a single element via selector
+				//
+				this
+					.select('#list2 li')
+					.notify(this.$)
+					.clone()
+					.notify(this.$)
+					.appendTo('#list1')
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+		
+			<div class="ellipses">......</div>
+			
+			<ul id="list1">
+				<li>item one</li>
+				<li>item two</li>
+				<li>item three</li>
+			</ul>
+
+			<div class="ellipses">......</div>
+			
+			<ul id="list2">
+				<li>item four</li>
+				<li>item five</li>
+				<li>item six</li>
+			</ul>
+			
+		</div>
+
+	</body>
+</html>

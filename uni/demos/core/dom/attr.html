@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				this
+					.spawn()
+					.within(function() {
+				
+						this
+							.select('div')
+							.attr('id', 'foo')
+				
+						//	Change #id to 'foo' on element passed in, instead
+						//	of whatever the Subject might be.
+						//
+						
+						this
+							.attr('id', 'bar', document.getElementById('changing'))
+							.notify(this.$) 
+							
+		
+					})
+
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="target1">Target1</div>
+		<div id="target2">Target2</div>
+		
+		<span id="changing">Changing</span>
+
+	</body>
+</html>

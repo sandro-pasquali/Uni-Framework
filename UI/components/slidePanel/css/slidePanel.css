@@ -1,0 +1,10 @@
+.ui.components.slidePanel .container {
+	display			: none;
+	left			: 0px;
+	position		: fixed;
+}
+ 
+.ui.components.slidePanel .content {
+	background-color		: #F0F0F0;
+	border					: 1px solid #666666;
+}

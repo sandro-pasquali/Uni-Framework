@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/notify.js')
+
+			//	Watch for termination event. #test will always broadcast a termination
+			//	event of `testTerminated:theIdofTheAuditor`. An auditor with id of `myId` is set
+			//	below. When that auditor is complete, `testTerminated:myId` will fire. 
+			//
+			.observe('testTerminated:myId', function(aD, cD) {
+				uni.notify(cD.msg);
+				uni.notify(cD);
+				uni.notify(aD);
+			}, {
+				msg: '#test terminal condition reached on object:'
+			})
+			
+			.observe('testTerminated:myId:second', function(aD, cD) {
+				uni.notify(cD.msg);
+				uni.notify(cD);
+				uni.notify(aD);
+			}, {
+				msg: '#test terminal condition reached on second object:'
+			})
+			
+			//	Set up a condition.  Here we run 100 times then end.  Note that
+			//	we are in scope of the auditor.  You could also send an option for 
+			//	.maxCycles.  See below re: .maxTime.
+			//
+			.test(function() {
+				if(this.cycles < 100) {
+					return true;
+				}
+			},
+			{
+				group:	'foo',
+				id: 	'myId'	
+			})
+			
+			//	Set up a condition with options.  
+			// 	Here we run 5000 ms then end.
+			//
+			.test(function() {
+				return true;
+			}, 
+			{
+				group:		'foo',
+				maxTime: 	5000,
+				id:			'myId:second'
+			})
+		
+			.within(function() {
+
+				uni.notify(uni.hasAuditor(function(i) {
+					return i.group == 'foo';
+				}, 'last'));
+			});
+		
+		
+		</script>
+		
+	</head>
+	<body>
+	
+
+	</body>
+</html>

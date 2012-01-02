@@ -1,0 +1,9 @@
+.ui.components.thumbnail img {
+	height					: 64px;
+	border					: 2px solid black;
+	-moz-border-radius		: 3px;
+	-webkit-border-radius	: 3px; 
+	-o-border-radius:		: 3px;
+	border-radius			: 3px; 
+	cursor					: pointer;
+}

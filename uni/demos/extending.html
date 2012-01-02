@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('kits/store.js')
+			.require('core/notify.js')
+			.require('kits/linq.js')
+			.sub([1,2])
+			.within(function() {
+			
+				this
+					.notify(this.$)
+					
+					.store
+							.sub(1)
+							.notify(this.store.$)
+							.set('foo', 'bar')
+							.get('foo')
+				this
+					.notify(this.store.$)
+					
+				this
+					.store
+						.extend({
+							sandro:	[
+								function() { 
+									return 'sandro' 
+								}, {
+									foo: 'bar'
+								}
+							],
+							pandro:	[
+								function() { 
+									return 'pandro' 
+								}
+							]
+						})
+						.sandro()
+						.pandro()
+						.notify(this.store.$)
+						.notify(this.$)
+				
+				//uni.store.addKit(uni.linq);
+				uni.store.sandro()
+				uni.notify(uni.store.$)
+				uni.notify(uni.store);
+				uni.notify(uni);
+				
+				uni.store.linq.sub([3,4])
+				uni.store.linq.Concat([5,6])
+				
+				uni.notify(uni.$)
+				uni.notify(uni.store.$)
+				uni.notify(uni.store.linq.$)
+				uni.notify(uni.linq.$)
+			});
+
+		</script>
+		
+	</head>
+	<body>
+	
+	</body>
+</html>

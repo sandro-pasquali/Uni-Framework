@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+  <style>#foo { background:yellow; }</style>
+
+		<script type="text/javascript" src="../../../core/uni-min.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				this
+					.select('#group div')
+					.insertBefore(document.getElementById('target1'))
+					
+					this
+						.select("p")
+						.insertBefore(document.getElementById('foo'))
+						.notify(this.$)
+						
+						
+					this
+						.select("#group2 div")
+						.insertBefore("#group3 div") 
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="dummy_container">
+			
+			<div>-----</div>
+			<div id="target1">Target1</div>
+			<div>-----</div>
+			
+			<div id="group">
+				<div>one</div>
+				<div>two</div>
+				<div>three</div>
+			</div>
+			
+			<div id="foo">flat</div>
+			<p>The world is: </p>
+			
+			<div id="group2">
+				<div>a</div>
+				<div>b</div>
+				<div>c</div>
+			</div>
+			
+			<div id="group3">
+				<div>Letters</div>
+				<div>Letters</div>
+				<div>Letters</div>
+			</div>
+			
+		</div>
+		
+		
+
+	</body>
+</html>

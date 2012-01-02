@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+			
+				this
+					.select('#container1')
+					.html('foo')
+					
+				this
+					.html('bar', document.getElementById('container2'))
+					
+				this
+					.namespace('testdata', ['one','two','three'])
+					.select('div#container3 li')
+					.html(function(i, h) {
+						return h + ' - ' + uni.ns.testdata[i];
+					});
+
+				this
+					.select('div#container4 li')
+					.html('dummy');
+
+
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div id="container1"></div>
+		<div id="container2"></div>
+		<div id="container3">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</div>
+		<div id="container4">
+			<li>a</li>
+			<li>b</li>
+			<li>c</li>
+		</div>
+
+	</body>
+</html>

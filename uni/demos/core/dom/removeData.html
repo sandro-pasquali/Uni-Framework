@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		
+		<script type="text/javascript" src="../../../core/uni.js"></script>
+		
+		<script type="text/javascript">
+		
+		uni
+			.require('core/notify.js')
+			.require('core/dom.js')
+			
+			.observe(function(eD, cD) {
+				
+				//	Setting one property
+				//
+				var d = this
+							.sub(document.getElementById('d1'))
+							.data('foo', 'bar');
+							
+				//	Setting another
+				//
+				var d = this
+							.sub(document.getElementById('d1'))
+							.data('rock', 'star');
+				
+				// Setting `bar` property across several elements.
+				//
+				d = this
+						.select('.d')
+						.data('bar', 'foo')
+				
+				//	Delete one
+				//
+				d = this
+						.sub(document.getElementById('d1'))
+						.removeData('foo');
+				
+				//  Getting all values.  `foo` is now gone.
+				//
+				d = this
+						.data();
+				uni.notify(d);
+				
+				//	Delete all data on all elements.
+				//
+				d = this
+						.select('div')
+						.removeData();
+				
+				d = this
+						.data();
+				uni.notify(d);
+			})
+			
+
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div class="d" id="d1">one</div>
+		<div class="d" id="d2">two</div>
+
+	</body>
+</html>
